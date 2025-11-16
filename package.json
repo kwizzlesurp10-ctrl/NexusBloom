@@ -1,0 +1,10 @@
+{
+  "name": "prompt-empire-nexus",
+  "version": "1.0.0",
+  "workspaces": ["backend", "frontend", "shared"],
+  "scripts": {
+    "dev": "lerna run dev --parallel",
+    "build": "lerna run build"
+  },
+  "devDependencies": { "lerna": "^7.0.0" }
+}

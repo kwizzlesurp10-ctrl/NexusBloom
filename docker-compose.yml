@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:latest
+    ports: ["27017:27017"]
+  redis:
+    image: redis:alpine
+    ports: ["6379:6379"]
+  backend:
+    build: ./backend
+    ports: ["3000:3000"]
+    depends_on: [mongo, redis]
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/promptEmpire
+      REDIS_URL: redis://redis:6379
+  frontend:
+    build: ./frontend
+    ports: ["3001:3000"]
+    depends_on: [backend]
